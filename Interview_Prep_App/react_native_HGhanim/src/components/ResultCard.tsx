@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  Button,
   StyleSheet,
   Text,
   TextStyle,
+  TouchableOpacity,
   View,
   ViewStyle,
 } from 'react-native';
@@ -19,6 +19,8 @@ type Style = {
   correctText: TextStyle;
   finishedText: TextStyle;
   commentText: TextStyle;
+  newButton: ViewStyle;
+  quitButton: ViewStyle;
 };
 const ResultCard: React.FC = () => {
   return (
@@ -29,7 +31,9 @@ const ResultCard: React.FC = () => {
       </View>
       <View style={styles.body}>
         <View style={styles.questionsView}>
-          <Text style={styles.questionsText}>There were 10 Questions.</Text>
+          <Text style={styles.questionsText}>
+            {'There were 10\nQuestions.'}
+          </Text>
           <Text style={styles.correctText}>Corrent Answers: 4</Text>
         </View>
         <View style={styles.questionsView}>
@@ -37,8 +41,12 @@ const ResultCard: React.FC = () => {
         </View>
       </View>
       <View style={styles.buttons}>
-        <Button title="NEW QUIZ" />
-        <Button title="QUIT APP" />
+        <TouchableOpacity style={styles.newButton}>
+          <Text>NEW QUIZ</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.quitButton}>
+          <Text>QUIT APP</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -49,6 +57,8 @@ const styles = StyleSheet.create<Style>({
     borderColor: 'yellow',
     //justifyContent: 'center',
     alignItems: 'center',
+    padding: 10,
+    borderRadius: 10,
   },
   header: {
     marginTop: 0,
@@ -62,18 +72,42 @@ const styles = StyleSheet.create<Style>({
     alignItems: 'center',
   },
   buttons: {
-    marginTop: 0,
+    marginTop: 11,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignSelf: 'stretch',
   },
   percentView: {},
   questionsView: {},
-  percentText: {},
-  questionsText: {},
-  finishedText: {},
-  commentText: {},
-  correctText: {},
+  percentText: {
+    color: 'red', //TODO: change to red/green/yellow depending on the score
+    fontSize: 25,
+  },
+  questionsText: {
+    color: '#36454f',
+  },
+  finishedText: {
+    color: '#36454f',
+    fontSize: 22,
+  },
+  commentText: {
+    color: 'red', //TODO: change to red/green/yellow depending on the score
+    alignSelf: 'center',
+    fontSize: 18,
+  },
+  correctText: {
+    color: '#36454f',
+  },
+  newButton: {
+    borderRadius: 10,
+    backgroundColor: 'yellow',
+    padding: 10,
+  },
+  quitButton: {
+    borderRadius: 10,
+    backgroundColor: 'yellow',
+    padding: 10,
+  },
 });
 
 export default ResultCard;
