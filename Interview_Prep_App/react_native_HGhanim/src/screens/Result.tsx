@@ -13,8 +13,9 @@ const Result: React.FC = () => {
 };
 const styles = StyleSheet.create<Style>({
   container: {
-    marginTop: 32,
+    flex: 1,
     paddingHorizontal: 24,
+    justifyContent: 'center',
   },
 });
 
